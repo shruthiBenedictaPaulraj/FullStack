@@ -1,0 +1,32 @@
+[
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "empId": "254061",
+        "userId": "1"
+    },
+    {
+        "firstName": "Andrew",
+        "lastName": "Benz",
+        "empId": "254063",
+        "userId": "2"
+    },
+    {
+        "firstName": "Sam",
+        "lastName": "Lesly",
+        "empId": "354062",
+        "userId": "3"
+    },
+    {
+        "firstName": "Lesly",
+        "lastName": "Sam",
+        "empId": "454061",
+        "userId": "4"
+    },
+    {
+        "firstName": "Elise",
+        "lastName": "susan",
+        "empId": "354062",
+        "userId": "5"
+    }
+]

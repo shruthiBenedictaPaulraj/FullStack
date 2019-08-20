@@ -1,0 +1,226 @@
+{
+    "projectList":[
+        {
+            "projectName": "Brazil Bridge",
+            "startDate": "13-1-2016",
+            "endDate": "10-9-2017",
+            "priority": 5,
+            "status": "Completed",
+            "manager": "John Messiah",
+            "noOfTasks": "2",
+            "projectId": "1",
+            "parentTask": {
+                "parentTaskName":"CRUD for Component View",
+                "parentTaskId":"1"
+            },
+            "taskList": [
+                {
+                    "taskId": "1",
+                    "projectId":"1",
+                    "taskName": "Create Component View",
+                    "startDate": "13-05-2018",
+                    "endDate": "16-05-2018",
+                    "priority": "1",
+                    "status" : "Completed",
+                    "parentTaskId" : "1"
+                },
+                {
+                    "taskId": "2",
+                    "projectId":"1",
+                    "taskName": "Edit Component View",
+                    "startDate": "13-06-2018",
+                    "endDate": "15-06-2018",
+                    "priority": "4",
+                    "status" : "Completed",
+                    "parentTaskId" : "1"
+                }
+            ]
+        },
+        {
+            "projectName": "Hudson Mission",
+            "startDate": "12-1-2013",
+            "endDate": "13-2-2018",
+            "status": "Completed",
+            "priority": 1,
+            "manager": "Andrew Blesswin",
+            "noOfTasks": "3",
+            "projectId": "2",
+            "parentTask": {
+                "parentTaskName":"CRUD for Display View",
+                "parentTaskId":"2"
+            },
+            "taskList": [
+                {
+                    "taskId": "1",
+                    "projectId":"2",
+                    "taskName": "Create Display View",
+                    "startDate": "13-05-2018",
+                    "endDate": "16-05-2018",
+                    "priority": "3",
+                    "status" : "Completed",
+                    "parentTaskId" : "2"
+                },
+                {
+                    "taskId": "2",
+                    "projectId":"2",
+                    "taskName": "update Display View",
+                    "startDate": "13-06-2018",
+                    "endDate": "15-06-2018",
+                    "priority": "4",
+                    "status" : "Completed",
+                    "parentTaskId" : "2"
+                },
+                {
+                    "taskId": "3",
+                    "projectId":"2",
+                    "taskName": "Save Display View",
+                    "startDate": "15-07-2018",
+                    "endDate": "17-09-2018",
+                    "priority": "5",
+                    "status" : "Completed",
+                    "parentTaskId" : "2"
+                }
+            ]
+        },
+        {
+            "projectName": "Tractor World",
+            "startDate": "10-2-2018",
+            "endDate": "11-4-2019",
+            "status": "In-Progress",
+            "priority": 4,
+            "manager": "Andrew Blesswin",
+            "noOfTasks": "2",
+            "projectId": "3",
+            "parentTask": {
+                "parentTaskName":"CRUD for Game View",
+                "parentTaskId":"3"
+            },
+            "taskList": [
+                {
+                    "taskId": "1",
+                    "projectId":"3",
+                    "taskName": "Create Game View",
+                    "startDate": "13-05-2018",
+                    "endDate": "16-05-2018",
+                    "priority": "3",
+                    "status" : "Completed",
+                    "parentTaskId" : "3"
+                },
+                {
+                    "taskId": "2",
+                    "projectId":"3",
+                    "taskName": "update Game View",
+                    "startDate": "13-06-2018",
+                    "endDate": "15-06-2018",
+                    "priority": "4",
+                    "status" : "Completed",
+                    "parentTaskId" : "3"
+                }
+            ]
+        },
+        {
+            "projectName": "Philipines Boat",
+            "startDate": "01-6-2018",
+            "endDate": "10-8-2019",
+            "status": "In-Progress",
+            "priority": 9,
+            "manager": "Victor France",
+            "noOfTasks": "4",
+            "projectId": "4",
+            "parentTask": {
+                "parentTaskName":"CRUD for Play View",
+                "parentTaskId":"4"
+            },
+            "taskList": [
+                {
+                    "taskId": "1",
+                    "projectId":"4",
+                    "taskName": "Create Play View",
+                    "startDate": "13-05-2018",
+                    "endDate": "16-05-2018",
+                    "priority": "3",
+                    "status" : "Completed",
+                    "parentTaskId" : "4"
+                },
+                {
+                    "taskId": "2",
+                    "projectId":"4",
+                    "taskName": "update Play View",
+                    "startDate": "13-06-2018",
+                    "endDate": "15-06-2018",
+                    "priority": "4",
+                    "status" : "Completed",
+                    "parentTaskId" : "4"
+                }
+            ]
+        },
+        {
+            "projectName": "Norway Harbour",
+            "startDate": "",
+            "endDate": "",
+            "status": "",
+            "priority": 9,
+            "manager": "Victor France",
+            "noOfTasks": "2",
+            "projectId": "5",
+            "parentTask": {
+                "parentTaskName":"CRUD for Harbour View",
+                "parentTaskId":"5"
+            },
+            "taskList": [
+                {
+                    "taskId": "1",
+                    "projectId":"5",
+                    "taskName": "Create Harbour View",
+                    "startDate": "13-05-2018",
+                    "endDate": "16-05-2018",
+                    "priority": "3",
+                    "status" : "Completed",
+                    "parentTaskId" : "4"
+                },
+                {
+                    "taskId": "2",
+                    "projectId":"5",
+                    "taskName": "update Harbour View",
+                    "startDate": "13-06-2018",
+                    "endDate": "15-06-2018",
+                    "priority": "4",
+                    "status" : "Completed",
+                    "parentTaskId" : "4"
+                }
+            ]
+        }
+    ],
+    "userList": [
+        {
+            "firstName": "John",
+            "lastName": "Doe",
+            "empId": "254061",
+            "userId": "1"
+        },
+        {
+            "firstName": "Andrew",
+            "lastName": "Benz",
+            "empId": "254063",
+            "userId": "2"
+        },
+        {
+            "firstName": "Sam",
+            "lastName": "Lesly",
+            "empId": "354062",
+            "userId": "3"
+        },
+        {
+            "firstName": "Lesly",
+            "lastName": "Sam",
+            "empId": "454061",
+            "userId": "4"
+        },
+        {
+            "firstName": "Elise",
+            "lastName": "susan",
+            "empId": "354062",
+            "userId": "5"
+        }
+    ]
+}

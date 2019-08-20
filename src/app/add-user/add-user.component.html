@@ -1,0 +1,91 @@
+<div class="pm-addUserComponent">
+  <div class="row">
+    <div class="col-sm-5">
+      <form [formGroup]="addUserForm">
+        <div class="form-group row">
+          <label for="pm-first-name" class="col-sm-3 col-form-label">First Name</label>
+          <div class="col-sm-6">
+            <input #firstName [ngClass]="addUserForm.controls['firstName'].touched && addUserForm.controls['firstName'].invalid ? 'pm-error-validationInput' : ''"
+              type="text" class="form-control" formControlName="firstName" id="pm-first-name">
+          </div>
+        </div>
+        <p class="pm-error-validationP" *ngIf="addUserForm.controls['firstName'].touched && addUserForm.controls['firstName'].invalid">First
+          Name is required</p>
+        <div class="form-group row">
+          <label for="pm-last-name" class="col-sm-3 col-form-label">Last name</label>
+          <div class="col-sm-6">
+            <input [ngClass]="addUserForm.controls['lastName'].touched && addUserForm.controls['lastName'].invalid ? 'pm-error-validationInput' : ''"
+              type="text" class="form-control" formControlName="lastName" id="pm-last-name">
+          </div>
+        </div>
+        <p class="pm-error-validationP" *ngIf="addUserForm.controls['lastName'].touched && addUserForm.controls['lastName'].invalid">Last
+          Name is required</p>
+        <div class="form-group row">
+          <label for="pm-emp-id" class="col-sm-3 col-form-label">Employee Id</label>
+          <div class="col-sm-6">
+            <input [ngClass]="addUserForm.controls['empId'].touched && addUserForm.controls['empId'].invalid ? 'pm-error-validationInput' : ''"
+              type="text" class="form-control" formControlName="empId" id="pm-emp-id">
+          </div>
+        </div>
+        <p class="pm-error-validationP" *ngIf="addUserForm.controls['empId'].touched && addUserForm.controls['empId'].invalid">Employee Id
+           is required</p>
+        <p>
+          <span *ngIf="!updateFlag" class="pr10"><button type="submit" [disabled]="!addUserForm.valid" class="btn btn-primary pm-fs-12"
+              (click)="addNewUser(addUserForm.value)">Add</button></span>
+          <span *ngIf="updateFlag" class="pr10"><button type="submit" [disabled]="!addUserForm.valid" class="btn btn-primary pm-fs-12"
+                (click)="updateUser()">Update</button></span>
+          <span><button type="reset" class="btn btn-primary pm-fs-12" (click)="reset()">Reset</button></span>
+        </p>
+      </form>
+    </div>
+    <div class="col-sm-7">
+      <nav class="navbar navbar-light bg-light">
+        <form>
+            <input class="form-control mr-sm-2" type="search" name="searchField" [(ngModel)]="searchField" placeholder="Search"
+              aria-label="Search">
+        </form>
+        <form>
+            <span class="pl30 pr20 pm-touppercase pm-fs-14 pm-fw-600">Sort by:</span>
+              <button (click)="sort('firstName')" class="btn btn-secondary p10 pm-fs-12">First Name</button><span class="pl10"></span>
+              <button (click)="sort('lastName')" class="btn btn-secondary p10 pm-fs-12">Last Name</button><span class="pl10"></span>
+              <button (click)="sort('empId')" class="btn btn-secondary p10 pm-fs-12">ID</button>
+          </form>
+      </nav>
+      <div class="pt20">
+          <div class="bg-light pt10 pb10 pm-border-bm" *ngFor="let user of userDetails  | filter : searchField | sortBy : sortField; let i =index">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <span class="pl15">First Name : </span>
+                      <span>{{user.firstName}}</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <span class="pl15">Last Name : </span>
+                      <span>{{user.lastName}}</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <span class="pl15">Emp id : </span>
+                      <span>{{user.empId}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="float-left pr20">
+                    <button type="submit" (click)="editUser(user, i)" class="btn btn-primary pm-fs-12">Edit</button>
+                  </div>
+
+                  <div class="float-left">
+                    <button type="submit" (click)="deleteUser(user)" class="btn btn-primary pm-fs-12">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>

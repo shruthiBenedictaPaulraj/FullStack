@@ -1,0 +1,179 @@
+<div class="pm-addTaskComponent">
+  <div class="col-sm-6">
+    <form [formGroup]="addTaskForm">
+      <div class="form-group row">
+        <label for="pm-first-name" class="col-sm-3 col-form-label">Project</label>
+        <div class="col-sm-6">
+          <input readonly type="text" class="form-control" formControlName="projectName" id="pm-first-name">
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-primary pm-fs-12" [disabled]="changeProjectFlag" data-toggle="modal"
+            data-target="#projectListModel">Search</button>
+        </div>
+      </div>
+      <p class="pm-error-validationP"
+        *ngIf="addTaskForm.controls['projectName'].touched && addTaskForm.controls['projectName'].invalid">Project
+        Name is required</p>
+      <div class="form-group row">
+        <label for="pm-last-name" class="col-sm-3 col-form-label">Task</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" formControlName="taskName" id="pm-last-name">
+        </div>
+      </div>
+      <input type="checkbox" name="checkEnable" (click)="getState($event)" formControlName="parentTaskStatus"><span
+        class="pm-fw-600"> Parent Task</span>
+      <div class="form-group row">
+        <label for="pm-emp-id" class="col-sm-3 col-form-label">Priority</label>
+        <div class="col-sm-6">
+          <input type="range" *ngIf="enableDate" min="0" max="30" step="1" class="form-control"
+            formControlName="priority" id="pm-emp-id">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="pm-first-name" class="col-sm-3 col-form-label">Parent Task</label>
+        <div class="col-sm-6">
+          <input readonly type="text" class="form-control" formControlName="parentTaskName" id="pm-first-name">
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-primary pm-fs-12" [disabled]="!enableDate" data-toggle="modal"
+            data-target="#parentListModel" (click)="openParentListModel(addTaskForm.value)">Search</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="pm-last-name" class="col-sm-3 col-form-label">Start Date</label>
+        <div class="col-sm-6">
+          <input type="date" *ngIf="enableDate" [min]="today" class="form-control" formControlName="startDate"
+            id="pm-last-name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="pm-emp-id" class="col-sm-3 col-form-label">End Date</label>
+        <div class="col-sm-6">
+          <input type="date" *ngIf="enableDate" [min]="tomorrow" class="form-control" formControlName="endDate"
+            id="pm-emp-id">
+        </div>
+      </div>
+      <p *ngIf=""></p>
+      <div class="form-group row">
+        <label for="pm-emp-id" class="col-sm-3 col-form-label">User : </label>
+        <div class="col-sm-6">
+          <input type="text" readonly class="form-control" formControlName="user" id="pm-emp-id">
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-primary pm-fs-12" data-toggle="modal" data-target="#userListModel">Search</button>
+        </div>
+      </div>
+      <span *ngIf="!updateFlag" class="pr10"><button type="submit" [disabled]="!addTaskForm.valid"
+          class="btn btn-primary pm-fs-12" (click)="addNewTask(addTaskForm.value)">Add Task</button></span>
+      <span *ngIf="updateFlag" class="pr10"><button type="submit" [disabled]="!addTaskForm.valid"
+          class="btn btn-primary pm-fs-12" (click)="updateTask(addTaskForm.value)">Update</button></span>
+      <span><button type="reset" class="btn btn-primary pm-fs-12" (click)="reset()">Reset</button></span>
+    </form>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="projectListModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Project List</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <p class="col-sm-12"><strong>Note: </strong><span>If the list is empty, there is no Project added to the application.</span>
+                </p>
+            </div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="pm-emp-id" class="col-sm-3 col-form-label">Project</label>
+            <div class="col-sm-6">
+              <select name="selectedProject" (change)="getProjectList(selectedProject)" class="form-control"
+                [(ngModel)]="selectedProject">
+                <option *ngFor="let project of projectList" [value]="project.projectId">{{project.projectName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="userListModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">User List</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <p class="col-sm-12"><strong>Note: </strong><span>If the list is empty, there is no user added to the application.</span>
+                </p>
+            </div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="pm-emp-id" class="col-sm-3 col-form-label">User List</label>
+            <div class="col-sm-6">
+              <select name="selectedUser" (change)="getUserList(selectedUser)" class="form-control"
+                [(ngModel)]="selectedUser">
+                <option *ngFor="let user of userList" [value]="user.userId">{{user.firstName}}
+                  {{user.lastName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="parentListModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Parent Task List</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <p class="col-sm-12"><strong>Note: </strong><span>If the list is empty, there is no Parent task added to the Project yet.</span>
+                </p>
+            </div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="pm-emp-id" class="col-sm-3 col-form-label">Parent Task List</label>
+            <div class="col-sm-6">
+              <select name="selectedParentTask" (change)="getParentTask(selectedParentTask)" class="form-control"
+                [(ngModel)]="selectedParentTask">
+                <option *ngFor="let task of parentTaskList" [value]="task.taskId">{{task.taskName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

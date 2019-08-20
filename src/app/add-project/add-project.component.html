@@ -1,0 +1,157 @@
+<div class="pm-addProjectComponent">
+  <div class="row">
+    <div class="col-sm-5">
+      <form [formGroup]="addProjectForm">
+        <div class="form-group row">
+          <label for="pm-first-name" class="col-sm-3 col-form-label">Project Name</label>
+          <div class="col-sm-6">
+            <input #projectNameRef [ngClass]="addProjectForm.controls['projectName'].touched && addProjectForm.controls['projectName'].invalid ? 'pm-error-validationInput' : ''"
+              type="text" class="form-control" formControlName="projectName" id="pm-first-name">
+          </div>
+        </div>
+        <p class="pm-error-validationP" *ngIf="addProjectForm.controls['projectName'].touched && addProjectForm.controls['projectName'].invalid">Project
+          Name is required</p>
+        <input type="checkbox" name="checkEnable" (click)="getState($event)"><span class="pm-fw-600"> Check Start and
+          End Date</span>
+        <div class="form-group row">
+          <label for="pm-last-name" class="col-sm-3 col-form-label">Start Date</label>
+          <div class="col-sm-6">
+            <input type="date" *ngIf="enableDate" [min]="today" class="form-control" formControlName="startDate" id="pm-project-start-date">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="pm-emp-id" class="col-sm-3 col-form-label">End Date</label>
+          <div class="col-sm-6">
+            <input type="date" *ngIf="enableDate" [min]="tomorrow" class="form-control" formControlName="endDate" id="pm-emp-id">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="pm-emp-id" class="col-sm-3 col-form-label">Priority</label>
+          <div class="col-sm-6">
+            <input type="range" min="0" max="30" step="1" class="form-control" formControlName="priority" id="pm-emp-id">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="pm-emp-id" class="col-sm-3 col-form-label">Manager</label>
+          <div class="col-sm-6">
+            <input type="text" readonly class="form-control" formControlName="manager" id="pm-emp-id">
+          </div>
+          <div class="col-sm-3">
+            <!-- <button class="btn btn-primary pm-fs-12" data-toggle="modal" data-target="#managerListModel" (click)="getManagerList()">Search</button> -->
+            <button class="btn btn-primary pm-fs-12" data-toggle="modal" data-target="#managerListModel">Search</button>
+          </div>
+        </div>
+        <p class="pm-error-validationP" *ngIf="addProjectForm.controls['manager'].touched && addProjectForm.controls['manager'].invalid">Manager
+          Name is required</p>
+        <span *ngIf="!updateFlag" class="pr10"><button type="submit" [disabled]="!addProjectForm.valid" class="btn btn-primary pm-fs-12"
+            (click)="addNewProject(addProjectForm.value)">Add</button></span>
+        <span *ngIf="updateFlag" class="pr10"><button type="submit" [disabled]="!addProjectForm.valid" class="btn btn-primary pm-fs-12"
+            (click)="updateProject(addProjectForm.value)">Update</button></span>
+        <span><button type="reset" class="btn btn-primary pm-fs-12" (click)="reset()">Reset</button></span>
+      </form>
+    </div>
+    <div class="col-sm-7">
+      <nav class="navbar navbar-light bg-light">
+        <form>
+          <input class="form-control mr-sm-2" type="search" name="searchField" [(ngModel)]="searchField" placeholder="Search"
+            aria-label="Search">
+        </form>
+        <form>
+          <span class="pl30 pr20 pm-touppercase pm-fs-14 pm-fw-600">Sort by:</span>
+          <button (click)="sort('startDate')" class="btn btn-secondary p10 pm-fs-12">Start Date</button><span class="pl10"></span>
+          <button (click)="sort('endDate')" class="btn btn-secondary p10 pm-fs-12">End Date</button><span class="pl10"></span>
+          <button (click)="sort('priority')" class="btn btn-secondary p10 pm-fs-12">Priority</button><span class="pl10"></span>
+          <button (click)="sort('status')" class="btn btn-secondary p10 pm-fs-12">Completed</button>
+        </form>
+      </nav>
+      <div class="pt20">
+        <div class="bg-light pt10 pb10 pm-border-bm" *ngFor="let project of projectDetails  | filter : searchField | sortBy : sortField">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="row">
+                <div class="col-sm-12">
+                  <span class="pl15">Project : </span>
+                  <span>{{project.projectName}}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <span class="pl15">No of Tasks : </span>
+                  <span>{{project.noOfTasks}}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <span class="pl15">Completed : </span>
+                  <span>{{project.status}}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <span class="pl15">Start Date : </span>
+                  <span>{{project.startDate}}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <span class="pl15">End Date : </span>
+                  <span>{{project.endDate}}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <span class="pl15">Priority : </span>
+                  <span>{{project.priority}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="float-left pr20">
+                <button type="submit" (click)="editProject(project)" class="btn btn-primary pm-fs-12">Update</button>
+              </div>
+              <div class="float-left">
+                <button type="submit" (click)="suspendProject(project)" class="btn btn-primary pm-fs-12">Suspend</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="managerListModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Managers List</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <p class="col-sm-12"><strong>Note: </strong><span>If the list is empty, there is user added to the application.</span>
+                </p>
+            </div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="pm-emp-id" class="col-sm-3 col-form-label">Managers List</label>
+            <div class="col-sm-6">
+              <select name="selectedManager" (change)="getManagerList(selectedManager)" class="form-control"
+                [(ngModel)]="selectedManager">
+                <option *ngFor="let manager of managersList" [value]="manager.managerId">{{manager.firstName}}
+                  {{manager.lastName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

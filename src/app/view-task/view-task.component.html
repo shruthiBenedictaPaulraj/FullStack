@@ -1,0 +1,88 @@
+<div class="pm-viewTaskComponent">
+  <div class="col-sm-12">
+    <nav class="navbar navbar-light bg-light">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" readonly type="search" placeholder="Search" name="search" aria-label="Search"
+          [(ngModel)]="searchField">
+        <button class="btn btn-outline-success pm-fs-12 my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#projectListModel">Search</button>
+      </form>
+      <form>
+        <span class="pl30 pr20 pm-touppercase pm-fs-14 pm-fw-600">Sort by:</span>
+        <button (click)="sort('startDate')" class="btn btn-secondary p10 pm-fs-12">Start Date</button><span class="pl10"></span>
+        <button (click)="sort('endDate')" class="btn btn-secondary p10 pm-fs-12">End Date</button><span class="pl10"></span>
+        <button (click)="sort('priority')" class="btn btn-secondary p10 pm-fs-12">Priority</button><span class="pl10"></span>
+        <button (click)="sort('status')" class="btn btn-secondary p10 pm-fs-12">Completed</button>
+      </form>
+    </nav>
+    <div class="pt20">
+      <!-- <div class="bg-light" *ngFor="let parent of parentTask"> -->
+        <!-- <div class="row" > -->
+          <div class="col-sm-12 pm-border-bm pt20 bg-light" *ngFor="let subTask of taskList | sortBy : sortField">
+            <div class="row pl15 pr15">
+              <div class="col-sm-2">
+                <p class=""><strong>Task</strong></p>
+                <span>{{subTask.taskName}}</span>
+              </div>
+              <div class="col-sm-2">
+                <p class=""><strong>Parent</strong></p>
+                <span>{{subTask.parentTaskName}}</span>
+              </div>
+              <div class="col-sm-2">
+                <p class=""><strong>Start Date</strong></p>
+                <span>{{subTask.startDate}}</span>
+              </div>
+              <div class="col-sm-2">
+                <p class=""><strong>End Date</strong></p>
+                <span>{{subTask.endDate}}</span>
+              </div>
+              <div class="col-sm-1">
+                <p class=""><strong>Priority</strong></p>
+                <span>{{subTask.priority}}</span>
+              </div>
+              <div class="col-sm-1">
+                <p class=""><strong>Status</strong></p>
+                <span>{{subTask.status}}</span>
+              </div>
+              <div class="col-sm-2 ">
+                <div class="float-left pr20 pb20">
+                  <button type="submit" (click)="editTask(subTask)" class="btn btn-primary pm-fs-12">Edit</button>
+                </div>
+                <div class="float-left pb20">
+                  <button type="submit" (click)="endTask(subTask)" class="btn btn-primary pm-fs-12">End Task</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
+      <!-- </div> -->
+    </div>
+  </div>
+  <div class="modal fade" id="projectListModel" tabindex="-1" role="dialog" aria-labelledby="projectListModel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Project List</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="pm-emp-id" class="col-sm-3 col-form-label">Project List</label>
+            <div class="col-sm-6">
+              <select name="selectedProject" (change)="getSelectedTaskDetails(selectedProject)" class="form-control"
+                [(ngModel)]="selectedProject">
+                <option *ngFor="let project of projectList" [value]="project.projectId">{{project.projectName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

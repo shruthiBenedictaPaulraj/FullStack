@@ -1,0 +1,130 @@
+{
+    "projectList":[
+        {
+            "projectName": "Brazil Bridge",
+            "startDate": "13-1-2016",
+            "endDate": "10-9-2017",
+            "priority": 5,
+            "status": "Completed",
+            "manager": "John Messiah",
+            "noOfTasks": "2",
+            "projectId": "1"
+        },
+        {
+            "projectName": "Hudson Mission",
+            "startDate": "12-1-2013",
+            "endDate": "13-2-2018",
+            "status": "Completed",
+            "priority": 1,
+            "manager": "Andrew Blesswin",
+            "noOfTasks": "3",
+            "projectId": "2"
+        },
+        {
+            "projectName": "Tractor World",
+            "startDate": "10-2-2018",
+            "endDate": "11-4-2019",
+            "status": "In-Progress",
+            "priority": 4,
+            "manager": "Andrew Blesswin",
+            "noOfTasks": "5",
+            "projectId": "3"
+        },
+        {
+            "projectName": "Philipines Boat",
+            "startDate": "01-6-2018",
+            "endDate": "10-8-2019",
+            "status": "In-Progress",
+            "priority": 9,
+            "manager": "Victor France",
+            "noOfTasks": "4",
+            "projectId": "4"
+        },
+        {
+            "projectName": "Norway Harbour",
+            "startDate": "",
+            "endDate": "",
+            "status": "",
+            "priority": 9,
+            "manager": "Victor France",
+            "noOfTasks": "4",
+            "projectId": "5"
+        }
+    ],
+    "managerList":[
+        {
+            "firstName" : "Andrew",
+            "lastName"  : "Blesswin",
+            "managerId" : "1",
+            "projectCount" : 2,
+            "mappedProjects" :[
+                {
+                    "projectName": "Hudson Mission",
+                    "startDate": "12-1-2013",
+                    "endDate": "13-2-2018",
+                    "status": "Completed",
+                    "priority": 1,
+                    "manager": "Andrew Blesswin",
+                    "noOfTasks": "3",
+                    "projectId": "2"
+                },
+                {
+                    "projectName": "Tractor World",
+                    "startDate": "10-2-2018",
+                    "endDate": "11-4-2019",
+                    "status": "In-Progress",
+                    "priority": 4,
+                    "manager": "Andrew Blesswin",
+                    "noOfTasks": "5",
+                    "projectId": "3"
+                }
+            ]
+        },
+        {
+            "firstName" : "John",
+            "lastName"  : "Messiah",
+            "managerId" : "2",
+            "projectCount" : 1,
+            "mappedProjects" :[
+                {
+                    "projectName": "Brazil Bridge",
+                    "startDate": "13-1-2016",
+                    "endDate": "10-9-2017",
+                    "priority": 5,
+                    "status": "Completed",
+                    "manager": "John Messiah",
+                    "noOfTasks": "2",
+                    "projectId": "1"
+                }
+            ]
+        },
+        {
+            "firstName" : "Victor",
+            "lastName"  : "France",
+            "managerId" : "3",
+            "projectCount" : 2,
+            "mappedProjects" :[
+                {
+                    "projectName": "Philipines Boat",
+                    "startDate": "01-6-2018",
+                    "endDate": "10-8-2019",
+                    "status": "In-Progress",
+                    "priority": 9,
+                    "manager": "Victor France",
+                    "noOfTasks": "4",
+                    "projectId": "4"
+                },
+                {
+                    "projectName": "Norway Harbour",
+                    "startDate": "",
+                    "endDate": "",
+                    "status": "",
+                    "priority": 9,
+                    "manager": "Victor France",
+                    "noOfTasks": "4",
+                    "projectId": "5"
+                }
+            ]
+        }
+    ]
+}
