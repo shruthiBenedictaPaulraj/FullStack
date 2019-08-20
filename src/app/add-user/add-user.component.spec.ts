@@ -10,7 +10,6 @@ import { FilterPipe } from '../filter.pipe';
 
 class MockUserManagementService {
   constructor() {}
-  
   addNewUserService(value): Observable<any> {
     return of({
       data: true

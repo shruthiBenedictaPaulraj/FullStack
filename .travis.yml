@@ -9,4 +9,6 @@ branches:
 before_script:
   - npm install -g @angular/cli
 script:
+- ng lint
+- npm run test-headless
 - ng build --base-href https://github.com/shruthiBenedictaPaulraj/FullStack.git

@@ -72,7 +72,7 @@ export class AddProjectComponent implements OnInit {
       }
     }
   }
-  getState(event){
+  getState(event) {
     if (event.target.checked) {
       this.addProjectForm.get('startDate').setValue(this.today);
       this.addProjectForm.get('endDate').setValue(this.today);
