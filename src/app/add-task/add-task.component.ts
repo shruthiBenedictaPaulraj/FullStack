@@ -22,6 +22,8 @@ export class AddTaskComponent implements OnInit, OnDestroy {
   changeProjectFlag = false;
   today: any;
   tomorrow: any;
+  error = false;
+
   constructor(private formBuilder: FormBuilder, private userManagementService: UserManagementService) {
     const currentDate: Date = new Date();
     let dd: any = currentDate.getDate();
@@ -99,6 +101,7 @@ export class AddTaskComponent implements OnInit, OnDestroy {
       this.projectList = val.data['projectList'];
       this.userList = val.data['userList'];
     }, (error) => {
+      this.error = true;
       console.log(error);
     });
   }
@@ -197,6 +200,7 @@ export class AddTaskComponent implements OnInit, OnDestroy {
         alert(`New Task is added successfully`);
         console.log(res);
       }, (error) => {
+        this.error = true;
         console.log(error);
       });
     } else {
@@ -208,11 +212,13 @@ export class AddTaskComponent implements OnInit, OnDestroy {
             this.userList = val.data['userList'];
             alert(`New Task is added successfully`);
           }, (error) => {
+            this.error = true;
             console.log(error);
           });
         }
       },
         (error) => {
+          this.error = true;
           console.log(error);
         });
     }
@@ -250,30 +256,30 @@ export class AddTaskComponent implements OnInit, OnDestroy {
         flag = true;
       }
     }
-    if (flag) {
-      const statusTemp = 'Not Updated';
-      const value = {
-        'projectId': formValue.projectId,
-        'parentTask': {
-          'parentTaskId': formValue.parentTaskId,
-          'parentTaskName': formValue.parentTaskName,
-        },
-        'taskList': [{
-          'taskId': formValue.taskId,
-          'projectId': formValue.projectId,
-          'taskName': formValue.taskName,
-          'startDate': formValue.startDate,
-          'endDate': formValue.endDate,
-          'priority': formValue.priority,
-          'status': statusTemp,
-          'parentTaskId': formValue.parentTaskId,
-          'parentTaskName': formValue.parentTaskName,
-          'parentTaskStatus': formValue.parentTaskStatus,
-          'userId': formValue.userId,
-        }]
-      };
-      obj.push(value.taskList[0]);
-    }
+    // if (flag) {
+    //   const statusTemp = 'Not Updated';
+    //   const value = {
+    //     'projectId': formValue.projectId,
+    //     'parentTask': {
+    //       'parentTaskId': formValue.parentTaskId,
+    //       'parentTaskName': formValue.parentTaskName,
+    //     },
+    //     'taskList': [{
+    //       'taskId': formValue.taskId,
+    //       'projectId': formValue.projectId,
+    //       'taskName': formValue.taskName,
+    //       'startDate': formValue.startDate,
+    //       'endDate': formValue.endDate,
+    //       'priority': formValue.priority,
+    //       'status': statusTemp,
+    //       'parentTaskId': formValue.parentTaskId,
+    //       'parentTaskName': formValue.parentTaskName,
+    //       'parentTaskStatus': formValue.parentTaskStatus,
+    //       'userId': formValue.userId,
+    //     }]
+    //   };
+    //   obj.push(value.taskList[0]);
+    // }
     const val = Object.assign({}, formValue, {
       taskList: obj
     });
@@ -282,6 +288,7 @@ export class AddTaskComponent implements OnInit, OnDestroy {
       alert(`Task is updated successfully`);
       console.log(res);
     }, (error) => {
+      this.error = true;
       console.log(error);
     });
   }

@@ -626,4 +626,29 @@ describe('AddTaskComponent', () => {
     expect(component.updateFlag).toBeFalsy();
   });
 
+  it('To check if the error is handeled for getTaskService', () => {
+    const spy = spyOn(userManagementService, 'getTaskService').and.returnValue(throwError('error'));
+    component.getTask();
+    expect(component.error).toBeTruthy();
+  });
+
+  it('To check if the error is handeled for updateTaskService', () => {
+    const spy = spyOn(userManagementService, 'updateTaskService').and.returnValue(throwError('error'));
+    const obj = {
+      'taskId': '7d556ad090fd270ba0602548',
+      'projectId': '5c694bd2808f9616f44c6280',
+      'taskName': 'New Task',
+      'startDate': '2019-08-18',
+      'endDate': '2019-09-21',
+      'priority': 10,
+      'status': 'Yet to start',
+      'parentTaskId': '',
+      'parentTaskName': '',
+      'parentTaskStatus': false,
+      'userId': '5d556ad090fd270ba06d2548'
+    };
+    component.updateTask(component.addTaskForm.value);
+    expect(component.error).toBeTruthy();
+  });
+
 });

@@ -475,4 +475,65 @@ describe('AddProjectComponent', () => {
     expect(component.error).toBeTruthy();
   });
 
+  it('To check if Error is handled for addNewProjectService', () => {
+    const spy = spyOn(userManagementService, 'addNewProjectService').and.returnValue(throwError('error'));
+    component.addNewProject(component.addProjectForm.value);
+    expect(component.error).toBeTruthy();
+  });
+  it('To check if empty response is handled for addNewProjectService', () => {
+    const spy = spyOn(userManagementService, 'addNewProjectService').and.returnValue(of({}));
+    component.addNewProject(component.addProjectForm.value);
+    expect(component.error).toBeFalsy();
+  });
+  it('To check if the empty respnse is handeled for addNewProjectService', () => {
+    const spy = spyOn(userManagementService, 'addNewProjectService').and.returnValue(of({}));
+    const obj = {
+      '_id': '5d556d183bc60017acd74d4a',
+      'projectName': 'Sample Project',
+      'startDate': '2019-08-15',
+      'endDate': '2020-01-30',
+      'priority': 23,
+      'manager': 'Dennison Peter',
+      'status': 'In-Progress',
+      'noOfTasks': 0,
+      'projectId': '5d556d183bc60017acd74d49'
+    };
+    component.editProject(obj);
+    expect(component.updateFlag).toBeTruthy();
+    component.updateProject();
+    expect(component.error).toBeFalsy();
+  });
+
+  it('To check if the empty response is handeled for suspendProjectService', () => {
+    const spy = spyOn(userManagementService, 'suspendProjectService').and.returnValue(of({}));
+    const obj = {
+      '_id': '5d556d183bc60017acd74d4a',
+      'projectName': 'Sample Project',
+      'startDate': '2019-08-15',
+      'endDate': '2020-01-30',
+      'priority': 23,
+      'manager': 'Dennison Peter',
+      'status': 'In-Progress',
+      'noOfTasks': 0,
+      'projectId': '5d556d183bc60017acd74d49'
+    };
+    component.suspendProject(obj);
+    expect(component.error).toBeFalsy();
+  });
+
+  it('To check the else part of edit', () => {
+    const obj = {
+      '_id': '5d556d183bc60017acd74d4a',
+      'projectName': 'Sample Project',
+      'startDate': '',
+      'endDate': '',
+      'priority': 23,
+      'manager': 'Dennison Peter',
+      'status': 'In-Progress',
+      'noOfTasks': 0,
+      'projectId': '5d556d183bc60017acd74d49'
+    };
+    component.editProject(obj);
+    expect(component.updateFlag).toBeTruthy();
+  });
 });

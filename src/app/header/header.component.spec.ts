@@ -10,7 +10,11 @@ class MockUserManagementService {
 }
 
 class MockRouter {
-  events = new Observable<NavigationEnd>();
+  public ne = new NavigationEnd(0, 'http://localhost:3000/addUser', 'http://localhost:3000/addUser');
+  public events = new Observable(observer => {
+    observer.next(this.ne);
+    observer.complete();
+  });
   navigate = jasmine.createSpy('navigateByUrl');
   navigateByUrl(data) {
     return of({});
@@ -21,7 +25,7 @@ describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let userManagementService: UserManagementService;
-  let router: Router;
+  let route: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -41,7 +45,7 @@ describe('HeaderComponent', () => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     userManagementService = TestBed.get(UserManagementService);
-    router = TestBed.get(Router);
+    route = TestBed.get(Router);
     fixture.detectChanges();
   });
 

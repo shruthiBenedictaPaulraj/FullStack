@@ -155,4 +155,30 @@ describe('AddUserComponent', () => {
     component.sort('firstName');
     expect(component.sortField).toBe('firstName');
   });
+
+  it('To check if the empty response is handeled for addNewUserService while updating', () => {
+    const obj = {
+      'firstName': 'Persia',
+      'lastName': 'Paul',
+      'empId': '459012',
+      'userId': '5c600f2cd76fbc29a8501452'
+    };
+    component.editUser(obj, 0);
+    expect(component.updateFlag).toBeTruthy();
+    const spy = spyOn(userManagementService, 'addNewUserService').and.returnValue(of({}));
+    component.updateUser();
+    expect(component.error).toBeFalsy();
+  });
+
+  it('To check if the empty response is handeled for deletUserService', () => {
+    const spy = spyOn(userManagementService, 'deletUserService').and.returnValue(of({}));
+    const obj = {
+      'firstName': 'Persia',
+      'lastName': 'Paul',
+      'empId': '459012',
+      'userId': '5c600f2cd76fbc29a8501452'
+    };
+    component.deleteUser(obj);
+    expect(component.error).toBeFalsy();
+  });
 });

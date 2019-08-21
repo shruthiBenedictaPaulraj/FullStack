@@ -17,7 +17,7 @@ describe('UserManagementService', () => {
         TestBed.configureTestingModule({
             imports: [HttpClientModule],
             providers: [UserManagementService]
-        })
+        });
     });
 
     it('should be created', () => {
@@ -75,7 +75,7 @@ describe('UserManagementService', () => {
         const addNewUserService: any = {};
         const input = {
             userId : '1'
-        }
+        };
         httpClientSpy.put.and.returnValue(of(addNewUserService));
         userManagementService.addNewUserService(input);
     });
@@ -83,7 +83,7 @@ describe('UserManagementService', () => {
     it('#addNewProjectService - put', () => {
         const input = {
             projectId : '1'
-        }
+        };
         const addNewProjectService: any = {};
         httpClientSpy.put.and.returnValue(of(addNewProjectService));
         userManagementService.addNewProjectService(input);
@@ -98,7 +98,7 @@ describe('UserManagementService', () => {
     it('#deletUserService', () => {
         const input = {
             userId : '1'
-        }
+        };
         const deletUserService: any = {};
         httpClientSpy.delete.and.returnValue(of(deletUserService));
         userManagementService.deletUserService(input);
@@ -107,7 +107,7 @@ describe('UserManagementService', () => {
     it('#suspendProjectService', () => {
         const input = {
             projectId : '1'
-        }
+        };
         const suspendProjectService: any = {};
         httpClientSpy.delete.and.returnValue(of(suspendProjectService));
         userManagementService.suspendProjectService(input);

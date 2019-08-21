@@ -1,6 +1,6 @@
 
 /* tslint:disable:no-unused-variable */
- 
+
 import { FilterPipe } from './filter.pipe';
 
 describe('Pipe: Default', () => {

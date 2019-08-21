@@ -108,7 +108,7 @@ export class AddProjectComponent implements OnInit {
 
   addNewProject(formValue) {
     this.userManagementService.addNewProjectService(formValue).subscribe(res => {
-      if (res) {
+      if (res.data) {
         this.addProjectForm.reset();
         this.userManagementService.getProjectService().subscribe(val => {
           const data = this.processData(val.data);
@@ -153,7 +153,7 @@ export class AddProjectComponent implements OnInit {
     };
     // console.log(this.addProjectForm , formValue)
     this.userManagementService.addNewProjectService(requestParam).subscribe(res => {
-      if (res) {
+      if (res.data) {
         this.userManagementService.getProjectService().subscribe(val => {
           const data = this.processData(val.data);
           this.projectDetails = data;
@@ -174,7 +174,7 @@ export class AddProjectComponent implements OnInit {
   }
   suspendProject(project) {
     this.userManagementService.suspendProjectService(project).subscribe(res => {
-      if (res) {
+      if (res.data) {
         this.userManagementService.getProjectService().subscribe(val => {
           const data = this.processData(val.data);
           this.projectDetails = data;
