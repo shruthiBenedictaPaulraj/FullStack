@@ -11,11 +11,12 @@ before_script:
 script:
 - ng lint
 - npm run test-headless
-- ng build --prod --base-href https://github.com/shruthiBenedictaPaulraj/FullStack.git
+- ng build --prod --base-href https://github.com/shruthiBenedictaPaulraj/FullStack/
+- mv dist/FullStack/index.html dist/FullStack/404.html
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: dist/angular
+  local_dir: dist/FullStack
   on:
     branch: master
