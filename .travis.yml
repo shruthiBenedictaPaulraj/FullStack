@@ -12,7 +12,7 @@ script:
 - ng lint
 - npm run test-headless
 - ng build --prod --base-href https://github.com/shruthiBenedictaPaulraj/FullStack/
-- mv dist/FullStack/index.html dist/FullStack/404.html
+# - mv dist/FullStack/index.html dist/FullStack/404.html
 deploy:
   provider: pages
   skip_cleanup: true
