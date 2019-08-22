@@ -11,7 +11,7 @@ before_script:
 script:
 - ng lint
 - npm run test-headless
-- ng build --prod --base-href https://github.com/shruthiBenedictaPaulraj/FullStack/
+- ng build --prod --base-href https://shruthiBenedictaPaulraj.github.io/FullStack/
 # - mv dist/FullStack/index.html dist/FullStack/404.html
 deploy:
   provider: pages
