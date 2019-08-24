@@ -384,7 +384,7 @@ router.put('/updateTask', (req, res) => {
                 'startDate': taskList[i].startDate,
                 'endDate': taskList[i].endDate,
                 'priority': taskList[i].priority,
-                'status': statusTemp,
+                'status': taskList[i].status ? taskList[i].status : statusTemp,
                 'parentTaskId': taskList[i].parentTaskId,
                 'parentTaskName': taskList[i].parentTaskName,
                 'parentTaskStatus': taskList[i].parentTaskStatus,

@@ -47,7 +47,7 @@
                 <div class="float-left pr20 pb20" *ngIf="subTask.status !== 'Completed'">
                   <button type="submit" (click)="editTask(subTask)" class="btn btn-primary pm-fs-12">Edit</button>
                 </div>
-                <div class="float-left pb20">
+                <div class="float-left pb20" *ngIf="subTask.status !== 'Completed'">
                   <button type="submit" (click)="endTask(subTask)" class="btn btn-primary pm-fs-12">End Task</button>
                 </div>
               </div>

@@ -167,7 +167,7 @@ export class AddTaskComponent implements OnInit, OnDestroy {
         obj = this.projectList[i]['taskList'];
       }
     }
-    const statusTemp = 'Not Updated';
+    // const statusTemp = 'Not Updated';
     const value = {
       'projectId': formValue.projectId,
       'parentTask': {
@@ -181,7 +181,7 @@ export class AddTaskComponent implements OnInit, OnDestroy {
         'startDate': formValue.startDate,
         'endDate': formValue.endDate,
         'priority': formValue.priority,
-        'status': statusTemp,
+        'status': '',
         'parentTaskId': formValue.parentTaskId,
         'parentTaskName': formValue.parentTaskName,
         'parentTaskStatus': formValue.parentTaskStatus,
