@@ -90,7 +90,6 @@ export class AddProjectComponent implements OnInit {
       this.managersList = val.data['managerList'];
     }, (error) => {
       this.error = true;
-      console.log(error);
     });
   }
   processData(data) {
@@ -117,13 +116,11 @@ export class AddProjectComponent implements OnInit {
           alert(`New Project is added successfully`);
         }, (error) => {
           this.error = true;
-          console.log(error);
         });
       }
     },
       (error) => {
         this.error = true;
-        console.log(error);
       });
   }
   sort(field) {
@@ -151,7 +148,6 @@ export class AddProjectComponent implements OnInit {
       'noOfTasks': this.editedProjectDetails['noOfTasks'],
       'projectId': this.editedProjectDetails['projectId']
     };
-    // console.log(this.addProjectForm , formValue)
     this.userManagementService.addNewProjectService(requestParam).subscribe(res => {
       if (res.data) {
         this.userManagementService.getProjectService().subscribe(val => {
@@ -163,13 +159,11 @@ export class AddProjectComponent implements OnInit {
           alert(`Project details are updated successfully`);
         }, (error) => {
           this.error = true;
-          console.log(error);
         });
       }
     },
       (error) => {
         this.error = true;
-        console.log(error);
       });
   }
   suspendProject(project) {
@@ -182,13 +176,11 @@ export class AddProjectComponent implements OnInit {
           alert(`The Project is suspended successfully`);
         }, (error) => {
           this.error = true;
-          console.log(error);
         });
       }
     },
       (error) => {
         this.error = true;
-        console.log(error);
       });
   }
   reset() {

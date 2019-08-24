@@ -40,7 +40,6 @@ export class AddUserComponent implements OnInit {
       this.userDetails = val.data;
     }, (error) => {
       this.error = true;
-      console.log(error);
     });
   }
   addNewUser(formValue) {
@@ -52,15 +51,12 @@ export class AddUserComponent implements OnInit {
           alert('New User is added successfully');
         }, (error) => {
           this.error = true;
-          console.log(error);
         });
       }
     },
       (error) => {
         this.error = true;
-        console.log(error);
       });
-    console.log(formValue);
   }
   sort(field) {
     this.sortField = field;
@@ -85,14 +81,12 @@ export class AddUserComponent implements OnInit {
           this.userDetails = val.data;
           alert('User details are updated successfully');
         }, (error) => {
-          console.log(error);
           this.error = true;
         });
       }
     },
       (error) => {
         this.error = true;
-        console.log(error);
       });
   }
   deleteUser(user) {
@@ -103,13 +97,11 @@ export class AddUserComponent implements OnInit {
           alert('User details are deleted successfully');
         }, (error) => {
           this.error = true;
-          console.log(error);
         });
       }
     },
       (error) => {
         this.error = true;
-        console.log(error);
       });
   }
   reset() {

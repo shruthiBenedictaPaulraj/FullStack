@@ -102,7 +102,6 @@ export class AddTaskComponent implements OnInit, OnDestroy {
       this.userList = val.data['userList'];
     }, (error) => {
       this.error = true;
-      console.log(error);
     });
   }
   getState(event) {
@@ -169,7 +168,6 @@ export class AddTaskComponent implements OnInit, OnDestroy {
       }
     }
     const statusTemp = 'Not Updated';
-    // console.log(Date.parse(formValue.startDate) > new Date());
     const value = {
       'projectId': formValue.projectId,
       'parentTask': {
@@ -198,10 +196,8 @@ export class AddTaskComponent implements OnInit, OnDestroy {
       this.userManagementService.updateTaskService(val).subscribe(res => {
         this.reset();
         alert(`New Task is added successfully`);
-        console.log(res);
       }, (error) => {
         this.error = true;
-        console.log(error);
       });
     } else {
       this.userManagementService.addNewTaskService(formValue).subscribe(res => {
@@ -213,13 +209,11 @@ export class AddTaskComponent implements OnInit, OnDestroy {
             alert(`New Task is added successfully`);
           }, (error) => {
             this.error = true;
-            console.log(error);
           });
         }
       },
         (error) => {
           this.error = true;
-          console.log(error);
         });
     }
   }
@@ -286,10 +280,8 @@ export class AddTaskComponent implements OnInit, OnDestroy {
     this.userManagementService.updateTaskService(val).subscribe(res => {
       this.reset();
       alert(`Task is updated successfully`);
-      console.log(res);
     }, (error) => {
       this.error = true;
-      console.log(error);
     });
   }
   ngOnDestroy() {

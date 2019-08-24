@@ -252,7 +252,6 @@ router.get('/addTaskGet', (req, res) => {
                     .toArray()
                     .then((taskData) => {
                         taskDataList = taskData;
-                        console.log('ddd', projectList)
                         for (var i = 0; i < projectList.length; i++) {
                             var flag = false;
                             for (var j = 0; j < taskDataList.length; j++) {

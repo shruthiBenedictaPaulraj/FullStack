@@ -29,7 +29,6 @@ export class ViewTaskComponent implements OnInit {
       this.projectList = projectData;
     }, (error) => {
       this.error = true;
-      console.log(error);
     });
   }
 
@@ -86,7 +85,6 @@ export class ViewTaskComponent implements OnInit {
       alert(`The task is marked as 'Complete' successfully`);
     }, (error) => {
       this.error = true;
-      console.log(error);
     });
   }
 }
