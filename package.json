@@ -27,7 +27,7 @@
     "core-js": "^2.5.4",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mongodb": "2.2.33",
     "mongojs": "2.6.0",
     "ngx-bootstrap": "^3.0.1",
